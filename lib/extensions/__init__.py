@@ -1,14 +1,15 @@
 from auto_satin import AutoSatin
 from convert_to_satin import ConvertToSatin
 from cut_satin import CutSatin
+from electron_simulator import ElectronSimulator
 from embroider import Embroider
-from lib.extensions.troubleshoot import Troubleshoot
 from flip import Flip
 from global_commands import GlobalCommands
 from input import Input
 from install import Install
 from layer_commands import LayerCommands
 from lettering import Lettering
+from lib.extensions.troubleshoot import Troubleshoot
 from object_commands import ObjectCommands
 from output import Output
 from params import Params
@@ -33,4 +34,5 @@ __all__ = extensions = [Embroider,
                         CutSatin,
                         AutoSatin,
                         Lettering,
-                        Troubleshoot]
+                        Troubleshoot,
+                        ElectronSimulator]
