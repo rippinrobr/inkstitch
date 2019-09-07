@@ -4,11 +4,11 @@ OS="${TRAVIS_OS_NAME}"
 ARCH="$(uname -m)"
 
 MACVERSION="${TRAVIS_OSX_IMAGE}"
-if [ ${MACVERSION} = "xcode9.2" ]; then
+if [ "${MACVERSION}" = "xcode9.2" ]; then
     MACVERSION="sierra"
-elif [ ${MACVERSION} = "xcode9.4" ]; then
+elif [ "${MACVERSION}" = "xcode9.4" ]; then
     MACVERSION="high_sierra"
-elif [ ${MACVERSION} = "xcode10.2" ]; then
+elif [ "${MACVERSION}" = "xcode10.2" ]; then
     MACVERSION="mojave"
 fi
 
@@ -16,9 +16,9 @@ cp -a images/examples palettes symbols fonts dist/inkstitch
 cp -a icons locales print dist/inkstitch/bin
 
 if [ "$BUILD" = "osx" ]; then
-    cp -a electron/dist/mac dist/inkstitch/electron
+    cp -a electron/build/mac dist/inkstitch/electron
 else
-    cp -a electron/dist/*-unpacked dist/inkstitch/electron
+    cp -a electron/build/*-unpacked dist/inkstitch/electron
 fi
 
 for d in inx/*; do
