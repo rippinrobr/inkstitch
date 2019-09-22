@@ -182,7 +182,7 @@ script:
       wget https://downloads.crowdin.com/cli/v2/crowdin-cli.zip
       unzip -j crowdin-cli.zip
 
-      pip install flask==0.* jinja2 Babel ./pyembroidery
+      pip install flask==0.* jinja2 Babel babel-vue-extractor ./pyembroidery
       make messages.po
       echo "uploading messages.po to crowdin"
       java -jar crowdin-cli.jar -v upload -b master
@@ -194,6 +194,9 @@ script:
       # files when a new translation string is added but we don't need to
       # commit those until folks actually translate the new strings.
       if git diff translations | grep -qE '^[-+]msgstr ".+"$'; then
+        (cd electron; yarn)
+        make electron/src/renderer/assets/translations.json
+
         git add translations
         git commit -m "new translations from Crowdin"
         git push https://${TRAVIS_REPO_SLUG%/*}:${GITHUB_API_KEY}@github.com/${TRAVIS_REPO_SLUG}.git master
